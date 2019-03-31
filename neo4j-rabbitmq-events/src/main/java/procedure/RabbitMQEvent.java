@@ -54,7 +54,7 @@ public class RabbitMQEvent {
             channel.basicPublish("", QUEUE_NAME, null, payload.getBytes());
             connection.close();
         } catch (Exception e) {
-            System.out.println("Error in eventing out"+ e.getMessage());
+            log.error("Error in eventing out"+ e.getMessage());
             return false;
         }
         log.info("Published message : " + payload);
