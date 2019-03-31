@@ -1,0 +1,4 @@
+CALL apoc.trigger.add('createEvent',   
+    "UNWIND apoc.trigger.nodesByLabel({assignedLabels}, 'DB') AS node
+     CALL rabbitmq.event(labels(node), node) return count(*)",
+     { phase: 'after' });
